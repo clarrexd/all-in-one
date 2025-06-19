@@ -1,4 +1,4 @@
-#include "src/headers/CommandHandler.h"
+#include "core/CommandHandler.h"
 
 int main(){
     CommandHandler app;
