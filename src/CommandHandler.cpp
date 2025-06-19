@@ -3,6 +3,7 @@
 #include "headers/browser.h"
 #include "headers/linecount.h"
 #include "headers/cwd.h"
+#include "headers/charcount.h"
 #include "../src/commands/time.cpp"
 #include "../src/commands/exit.cpp"
 
@@ -19,6 +20,7 @@ void CommandHandler::registerCommands() {
     commands["browser"] = std::make_unique<BrowserCommand>();
     commands["linecount"] = std::make_unique<LineCountCommand>();
     commands["cwd"] = std::make_unique<CwdCommand>();
+    commands["charcount"] = std::make_unique<CharCountCommand>();
     commands["exit"] = std::make_unique<ExitCommand>([this]() { running = false; });
 }
 
