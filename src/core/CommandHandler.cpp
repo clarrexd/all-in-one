@@ -4,7 +4,7 @@
 #include "../headers/linecount.h"
 #include "../headers/cwd.h"
 #include "../headers/charcount.h"
-#include "../headers/time.h"
+#include "../headers/timeCommand.h"
 #include "../headers/exit.h"
 
 #include <iostream>
