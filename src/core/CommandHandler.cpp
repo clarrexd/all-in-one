@@ -1,11 +1,11 @@
-#include "headers/CommandHandler.h"
-#include "headers/responsetime.h"
-#include "headers/browser.h"
-#include "headers/linecount.h"
-#include "headers/cwd.h"
-#include "headers/charcount.h"
-#include "../src/commands/time.cpp"
-#include "../src/commands/exit.cpp"
+#include "../core/CommandHandler.h"
+#include "../headers/responsetime.h"
+#include "../headers/browser.h"
+#include "../headers/linecount.h"
+#include "../headers/cwd.h"
+#include "../headers/charcount.h"
+#include "../headers/time.h"
+#include "../headers/exit.h"
 
 #include <iostream>
 #include <sstream>  // For std::istringstream

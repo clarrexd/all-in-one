@@ -1,14 +1,16 @@
-# Makefile for all-in-one C++ app
-
 CXX = g++
-CXXFLAGS = -std=c++17 -Isrc/headers -Wall -Wextra -O2
+CXXFLAGS = -std=c++17 -Wall -Wextra -O2 \
+           -Isrc/headers \
+           -Isrc/core
+
 SRC_DIR = src
+CORE_DIR = $(SRC_DIR)/core
 CMD_DIR = $(SRC_DIR)/commands
 BUILD_DIR = build
 TARGET = all-in-one
 
-SOURCES = main.cpp \
-          $(SRC_DIR)/CommandHandler.cpp \
+SOURCES = $(SRC_DIR)/main.cpp \
+          $(CORE_DIR)/CommandHandler.cpp \
           $(wildcard $(CMD_DIR)/*.cpp)
 
 OBJECTS = $(patsubst %.cpp,$(BUILD_DIR)/%.o,$(SOURCES))
@@ -22,6 +24,7 @@ build compile: $(TARGET)
 $(TARGET): $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
+# Pattern rule for compiling .cpp files to .o files in the build directory
 $(BUILD_DIR)/%.o: %.cpp
 	@mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
