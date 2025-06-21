@@ -5,12 +5,14 @@
 #include "../headers/cwd.h"
 #include "../headers/charcount.h"
 #include "../headers/timeCommand.h"
+#include "../headers/sessiontime.h"
 #include "../headers/exit.h"
 
 #include <iostream>
 #include <sstream>  // For std::istringstream
 
 CommandHandler::CommandHandler() : running(true) {
+    sessionStart = std::chrono::steady_clock::now();
     registerCommands();
 }
 
@@ -21,7 +23,12 @@ void CommandHandler::registerCommands() {
     commands["linecount"] = std::make_unique<LineCountCommand>();
     commands["cwd"] = std::make_unique<CwdCommand>();
     commands["charcount"] = std::make_unique<CharCountCommand>();
+    commands["sessiontime"] = std::make_unique<SessionTimeCommand>(sessionStart);
     commands["exit"] = std::make_unique<ExitCommand>([this]() { running = false; });
+}
+
+std::chrono::time_point<std::chrono::steady_clock> CommandHandler::getSessionStartTime() const {
+    return sessionStart;
 }
 
 void CommandHandler::run() {
